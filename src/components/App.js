@@ -1,7 +1,7 @@
-import WellcomePage from '../pages/WellcomePage';
+import HomePage from "pages/HomePage/HomePage";
 
 export const App = () => {
   return (
-    <WellcomePage />
+    <HomePage />
   );
 };

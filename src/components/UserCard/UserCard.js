@@ -1,8 +1,8 @@
-import { Wrap, Section, LogoStyled, LineUser, WrapUser, ImgUser, Tweets, Followers, Button } from "./WellcomePage.styled"
+import { Wrap, Section, LogoStyled, LineUser, WrapUser, ImgUser, Tweets, Followers, Button } from "./UserCard.styled"
 
 import avatar from '../../images/avatar.png'
 
-export const WellcomePage = () => {
+export const UserCard = () => {
   return (
     <Wrap>
       <Section>
