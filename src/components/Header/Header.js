@@ -1,7 +1,10 @@
+import { HeaderStyled } from "./Header.styled"
 
 export const Header = () => {
   return (
-    <div></div>
+    <HeaderStyled>
+
+    </HeaderStyled>
 
   )
 }

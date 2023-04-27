@@ -2,14 +2,6 @@ import styled from 'styled-components';
 import bgImage from '../../images/bgImage.svg';
 import {ReactComponent as Logo} from '../../images/logo.svg'
 
-export const Wrap = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
-`;
-
 export const Section = styled.div`
   position: relative;
   padding-top: 20px;
@@ -21,6 +13,11 @@ export const Section = styled.div`
   border-radius: 20px;
   background-repeat: no-repeat;
   background-position: center top 20px, center;
+  cursor: pointer;
+  transition: transform 250ms linear;
+  &:hover, &:focus {
+    transform: scale(1.01)
+  }
 `;
 
 export const LogoStyled = styled(Logo)`
