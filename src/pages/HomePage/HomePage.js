@@ -1,9 +1,9 @@
-import UserCard from "components/UserCard"
 
-const HomePage = () => {
+
+export const HomePage = () => {
   return (
-    <UserCard />
+    <div>Home Page</div>
   );
 }
 
-export default HomePage
+

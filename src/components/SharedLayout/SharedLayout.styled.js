@@ -9,4 +9,6 @@ export const Layout = styled.div`
 
 export const Main = styled.main`
   flex-grow: 1;
+  padding-top: 30px;
+  padding-bottom: 30px;
 `
