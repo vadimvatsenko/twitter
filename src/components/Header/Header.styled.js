@@ -34,7 +34,10 @@ export const NavLinkStyled = styled(NavLink)`
   font-size: 18px;
   font-weight: 600;
   transition: background 250ms linear;
-  &:hover, &:focus, &:active {
+  &:hover, &:focus {
+    background: #5CD3A8;
+  }
+  &.active {
     background: #5CD3A8;
   }
 `;
