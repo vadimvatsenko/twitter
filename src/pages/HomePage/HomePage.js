@@ -1,8 +1,8 @@
-
+import { HomePageSection } from "./HomePage.styled";
 
 export const HomePage = () => {
   return (
-    <div>Home Page</div>
+    <HomePageSection />
   );
 }
 
