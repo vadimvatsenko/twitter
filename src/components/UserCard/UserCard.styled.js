@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import bgImage from '../../images/bgImage.svg';
 import {ReactComponent as Logo} from '../../images/logo.svg'
 
-export const Section = styled.div`
+export const TweetsItems = styled.li`
   position: relative;
   padding-top: 20px;
   padding-bottom: 36px;

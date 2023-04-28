@@ -1,12 +1,11 @@
-import { HeaderStyled, Navigation, NavigationList, NavigationItems, NavLinkStyled } from "./Header.styled";
-import Container from "components/Container";
+import { HeaderStyled, HeaderContainer, Navigation, NavigationList, NavigationItems, NavLinkStyled } from "./Header.styled";
 import { BsFillHouseHeartFill } from "react-icons/bs";
 import {SiGooglemessages} from 'react-icons/si'
 
 export const Header = () => {
   return (
     <HeaderStyled>
-      <Container>
+      <HeaderContainer style={{paddingBottom: -15}}>
         <Navigation>
           <NavigationList>
             <NavigationItems>
@@ -21,7 +20,7 @@ export const Header = () => {
             </NavigationItems>
           </NavigationList>
         </Navigation>
-      </Container>
+      </HeaderContainer>
     </HeaderStyled>
   );
 }

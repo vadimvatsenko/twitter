@@ -1,10 +1,12 @@
 import UserCard from "components/UserCard";
-import Container from "components/Container";
+import { TweetsList, TweetsContainer } from "./TweetsPage.styled";
 
 export const TweetsPage = () => {
   return (
-    <Container>
-      <UserCard />
-    </Container>
+    <TweetsContainer>
+      <TweetsList>
+        <UserCard />
+      </TweetsList>
+    </TweetsContainer>
   );
 }

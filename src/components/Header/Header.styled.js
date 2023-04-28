@@ -1,16 +1,24 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import goItLogo from '../../images/logo.svg'
 
 export const HeaderStyled = styled.header`
   display: flex;
   align-items: center;
-  height: 60px;
-  background: linear-gradient(114.99deg, #471CA9 -0.99%, #5736A3 54.28%, #4B2A99 78.99%);
+  min-height: 68px;
+  background: url(${goItLogo}), linear-gradient(114.99deg, #471CA9 -0.99%, #5736A3 54.28%, #4B2A99 78.99%);
   box-shadow: -2.5777px 6.87386px 20.6216px rgba(0, 0, 0, 0.23);
 `;
 
-export const Navigation = styled.nav`
+export const HeaderContainer = styled.div`
+  display: block;
+  margin: 0 auto;
+  width: 1200px;
+  padding-left: 15px;
+  padding-right: 15px;
+`
 
+export const Navigation = styled.nav`
 `;
 
 export const NavigationList = styled.ul`
