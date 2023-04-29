@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const FilterWrap = styled.div`
   border-radius: 10px;
   overflow: hidden;
-`
+`;
 
 export const FilterInput = styled.select`
   width: 196px;

@@ -1,16 +1,24 @@
 import UserCard from "components/UserCard";
-import { TweetsList, TweetsContainer } from "./TweetsPage.styled";
+import LoadMoreBtn  from "components/LoadMoreBtn/";
+import { TweetsPageSection, TweetsList, TweetsContainer } from "./TweetsPage.styled";
+import { isLoadingTweets } from "redux/selectors";
+import { useSelector } from "react-redux";
+
+import Loader from "components/Loader";
 
 export const TweetsPage = () => {
-  return (
+  const isLoading = useSelector(isLoadingTweets);
 
-    <>
+
+  return (
+    <TweetsPageSection>
       <TweetsContainer>
-          <TweetsList>
+        <TweetsList>
           <UserCard />
         </TweetsList>
       </TweetsContainer>
+      {isLoading ? <Loader /> : <LoadMoreBtn />}
 
-    </>
+    </TweetsPageSection>
   );
 }

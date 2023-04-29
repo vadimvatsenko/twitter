@@ -23,8 +23,7 @@ export const TweetsItems = styled.li`
 export const LogoStyled = styled(Logo)`
   margin-left: 20px ;
   width: 76px;
-
-`
+`;
 
 export const LineUser = styled.div`
   position: relative;
@@ -51,10 +50,10 @@ export const WrapUser = styled.div`
   transform: translateX(50%);
   overflow: hidden;
 
-`
+`;
 
 export const ImgUser = styled.img`
-`
+`;
 
 export const Tweets = styled.p`
   margin-top: 62px;
@@ -63,7 +62,7 @@ export const Tweets = styled.p`
   font-weight: 500;
   text-transform: uppercase;
   text-align: center;
-`
+`;
 
 export const Followers = styled.p`
   margin-top: 16px;
@@ -72,20 +71,7 @@ export const Followers = styled.p`
   font-weight: 500;
   text-transform: uppercase;
   text-align: center;
-`
+`;
 
-export const Button = styled.button`
-  display: block;
-  margin: 0 auto;
-  margin-top: 26px;
-  width: 196px;
-  height: 50px;
-  color: #373737;
-  background: #EBD8FF;
-  box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
-  font-size: 18px;
-  font-weight: 600;
-  text-transform: uppercase;
-`
+
 

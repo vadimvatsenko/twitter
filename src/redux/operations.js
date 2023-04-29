@@ -19,3 +19,17 @@ export const fetchTweets = createAsyncThunk(
     }
   }
 );
+
+export const addFollowers = createAsyncThunk(
+  'tweets/addFollowers',
+  async ({id, followers, avatar, tweets}, thunkAPI) => {
+    try {
+      const response = await axios.put(`/blog/${id}`, { followers, avatar, tweets});
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+
+
+  }
+)
