@@ -16,6 +16,12 @@ export const HeaderContainer = styled.div`
   width: 1200px;
   padding-left: 15px;
   padding-right: 15px;
+`;
+
+export const HeaderContentWrap = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `
 
 export const Navigation = styled.nav`

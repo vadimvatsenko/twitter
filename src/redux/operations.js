@@ -5,9 +5,14 @@ axios.defaults.baseURL = "https://63d3e9f8a93a149755b5ebb6.mockapi.io/api/v1/";
 
 export const fetchTweets = createAsyncThunk(
   "tweets/fetchAll",
-  async (_, thunkAPI) => {
+  async ({ page, limit }, thunkAPI) => {
     try {
-      const response = await axios.get("/blog");
+      const response = await axios.get("/blog", {
+        params: {
+          page,
+          limit
+        }
+      });
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

@@ -1,18 +1,24 @@
 import { TweetsItems, LogoStyled, LineUser, WrapUser, ImgUser, Tweets, Followers, Button } from "./UserCard.styled";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { getTweets } from "redux/selectors";
+import { getTweets, isLoadingTweets } from "redux/selectors";
 import { fetchTweets } from "redux/operations";
-
 
 export const UserCard = () => {
   const tweets = useSelector(getTweets);
+  const isLoading = useSelector(isLoadingTweets)
   const dispatch = useDispatch();
-  const [displayedTweets, setDisplayedTweets] = useState(3);
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(3);
+  const [follow, setFollow] = useState(false)
+  const [showLoadMore, setShowLoadMore] = useState(false);
+
+  console.log(isLoadingTweets)
+  console.log(getTweets)
 
   useEffect(() => {
-    dispatch(fetchTweets());
-  }, [dispatch]);
+    dispatch(fetchTweets({ page, limit }));
+  }, [dispatch, page, limit]);
 
   const displayFollowers = (value) => {
     if (value >= 1000) {
@@ -23,13 +29,18 @@ export const UserCard = () => {
   };
 
   const handleLoadMore = () => {
-    setDisplayedTweets((prevState) => prevState + 3);
-    window.scrollTo(0,document.body.scrollHeight);
+    setPage(page);
+    setLimit(limit + 3);
   };
+
+  const handleFollow = () => {
+    setFollow(!follow)
+  }
 
   return (
     <>
-      {tweets.slice(0, displayedTweets).map(({ id, avatar, tweets, followers }) => (
+      {isLoading && <div>Load...</div>}
+      {tweets.map(({ id, avatar, tweets, followers }) => (
         <TweetsItems key={id}>
           <LogoStyled />
           <LineUser>
@@ -39,12 +50,11 @@ export const UserCard = () => {
           </LineUser>
           <Tweets>{tweets} TWEETS</Tweets>
           <Followers>{displayFollowers(followers)} Followers</Followers>
-          <Button>Follow</Button>
+
+          <Button onClick={handleFollow}>{follow? "Following": "Follow" }</Button>
         </TweetsItems>
       ))}
-      {tweets.length > displayedTweets && (
-        <Button onClick={handleLoadMore}>Load More</Button>
-      )}
+      <Button onClick={handleLoadMore}>Load More</Button>
     </>
   );
 };
