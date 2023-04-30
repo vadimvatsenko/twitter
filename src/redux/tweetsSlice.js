@@ -28,7 +28,7 @@ const tweetsSlice = createSlice({
     [addFollowers.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      state.items = action.payload;
+      // state.items = action.payload;
     },
     [addFollowers.rejected](state, action) {
       state.isLoading = false;

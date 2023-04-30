@@ -1,10 +1,11 @@
 import { TweetsItems, LogoStyled, LineUser, WrapUser, ImgUser, Tweets, Followers } from "./UserCard.styled";
 import { Button } from "../LoadMoreBtn/LoadMoreBtn.styled";
-import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
-import { getTweets, isLoadingTweets, getStatusFilter } from "redux/selectors";
 import { statusFilters } from "redux/constants";
-import { fetchTweets, addFollowers } from "redux/operations";
+import { useSelector, useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
+import { getStatusFilter, getTweets } from "redux/selectors";
+import { addFollowers } from "redux/operations";
+import { fetchTweets  } from "redux/operations";
 
 const getVisibleTweets = (tweets, statusFilter, follows) => {
   switch (statusFilter) {
@@ -17,27 +18,34 @@ const getVisibleTweets = (tweets, statusFilter, follows) => {
   }
 };
 
-export const UserCard = () => {
-  const tweets = useSelector(getTweets);
-  const isLoading = useSelector(isLoadingTweets);
-  const statusFilter = useSelector(getStatusFilter);
+export const UserCard = ({page, limit}) => {
   const dispatch = useDispatch();
-  const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(3);
+
   const [follows, setFollows] = useState(() => {
     const savedFollows = localStorage.getItem("follows");
     return savedFollows ? JSON.parse(savedFollows) : {};
   });
 
-  const visibleTweets = getVisibleTweets(tweets, statusFilter, follows);
-
-  useEffect(() => {
-    dispatch(fetchTweets({ page, limit }));
-  }, [dispatch, page, limit]);
-
   useEffect(() => {
     localStorage.setItem("follows", JSON.stringify(follows));
   }, [follows]);
+
+  const tweets = useSelector(getTweets);
+  const statusFilter = useSelector(getStatusFilter);
+  const visibleTweets = getVisibleTweets(tweets, statusFilter, follows);
+
+  const handleFollow = (id, followers, avatar, tweets) => {
+    if (!follows[id]) {
+      dispatch(addFollowers({ id, followers: followers + 1, avatar, tweets }));
+    } if (follows[id]) {
+      dispatch(addFollowers({ id, followers: followers - 1, avatar, tweets }));
+    }
+    setFollows((prevFollows) => ({
+      ...prevFollows,
+      [id]: !prevFollows[id],
+    }));
+
+  };
 
   const displayFollowers = (value) => {
     if (value >= 1000) {
@@ -47,22 +55,8 @@ export const UserCard = () => {
     return value;
   };
 
-  const handleLoadMore = () => {
-    setPage(page);
-    setLimit(limit + 3);
-  };
-
-  const handleFollow = (id, followers, avatar, tweets) => {
-    // dispatch(addFollowers({ id, followers: followers + 1, avatar, tweets }));
-    setFollows((prevFollows) => ({
-      ...prevFollows,
-      [id]: !prevFollows[id],
-    }));
-  };
-
   return (
     <>
-
       {visibleTweets.map(({ id, avatar, tweets, followers }) => (
         <TweetsItems
           key={id}>
@@ -87,8 +81,6 @@ export const UserCard = () => {
           </Button>
         </TweetsItems>
       ))}
-      {/* {isLoading ? <Loader /> : <Button onClick={handleLoadMore}>Load More</Button>} */}
-
     </>
   );
 };
