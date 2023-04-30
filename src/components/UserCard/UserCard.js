@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { getStatusFilter, getTweets } from "redux/selectors";
 import { addFollowers } from "redux/operations";
-import { fetchTweets  } from "redux/operations";
+
 
 const getVisibleTweets = (tweets, statusFilter, follows) => {
   switch (statusFilter) {
@@ -20,6 +20,7 @@ const getVisibleTweets = (tweets, statusFilter, follows) => {
 
 export const UserCard = ({page, limit}) => {
   const dispatch = useDispatch();
+  const tweets = useSelector(getTweets);
 
   const [follows, setFollows] = useState(() => {
     const savedFollows = localStorage.getItem("follows");
@@ -28,9 +29,10 @@ export const UserCard = ({page, limit}) => {
 
   useEffect(() => {
     localStorage.setItem("follows", JSON.stringify(follows));
+    
   }, [follows]);
 
-  const tweets = useSelector(getTweets);
+
   const statusFilter = useSelector(getStatusFilter);
   const visibleTweets = getVisibleTweets(tweets, statusFilter, follows);
 
@@ -39,12 +41,12 @@ export const UserCard = ({page, limit}) => {
       dispatch(addFollowers({ id, followers: followers + 1, avatar, tweets }));
     } if (follows[id]) {
       dispatch(addFollowers({ id, followers: followers - 1, avatar, tweets }));
+
     }
     setFollows((prevFollows) => ({
       ...prevFollows,
       [id]: !prevFollows[id],
     }));
-
   };
 
   const displayFollowers = (value) => {

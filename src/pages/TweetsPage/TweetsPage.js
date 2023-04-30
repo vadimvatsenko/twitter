@@ -5,21 +5,24 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { isLoadingTweets } from "redux/selectors";
 import { fetchTweets } from "redux/operations";
-import { getTweets } from "redux/selectors";
-
+import GoBackBtn from "components/GoBackBtn";
 import Loader from "components/Loader";
 
+import { useLocation } from "react-router-dom";
+
 export const TweetsPage = () => {
+
+  const location = useLocation()
   const dispatch = useDispatch();
   const isLoading = useSelector(isLoadingTweets);
-  const tweets = useSelector(getTweets);
+
 
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(3);
 
   useEffect(() => {
     dispatch(fetchTweets({ page, limit }));
-  }, [dispatch, page, limit, tweets]);
+  }, [dispatch, page, limit]);
 
   const handleLoadMore = () => {
     setPage(page);
@@ -28,6 +31,7 @@ export const TweetsPage = () => {
 
   return (
     <TweetsPageSection>
+      <GoBackBtn />
       <TweetsContainer>
         <TweetsList>
           <UserCard
@@ -37,7 +41,7 @@ export const TweetsPage = () => {
         </TweetsList>
       </TweetsContainer>
       {isLoading ?
-        <Loader style={{margin: '0 auto'}} /> :
+        <Loader style={{ margin: '0 auto' }} /> :
         <LoadMoreBtn handleLoadMore={handleLoadMore} />}
     </TweetsPageSection>
   );

@@ -6,6 +6,7 @@ import {SiGooglemessages} from 'react-icons/si'
 
 export const Header = () => {
   const location = useLocation();
+  console.log(location.pathname)
   return (
     <HeaderStyled>
       <HeaderContainer style={{ paddingBottom: -15 }}>
@@ -18,7 +19,8 @@ export const Header = () => {
                   HOME</NavLinkStyled>
               </NavigationItems>
               <NavigationItems>
-                <NavLinkStyled to='tweets'>
+                <NavLinkStyled to='tweets' state={{from: location.pathname}} >
+
                   <SiGooglemessages style={{ marginRight: 10 }} />
                   TWEETS</NavLinkStyled>
               </NavigationItems>
