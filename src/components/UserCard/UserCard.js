@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { getStatusFilter, getTweets } from "redux/selectors";
 import { addFollowers } from "redux/operations";
-
+import defaultUserAvatar from '../../images/avatar.png'
 
 const getVisibleTweets = (tweets, statusFilter, follows) => {
   switch (statusFilter) {
@@ -18,7 +18,7 @@ const getVisibleTweets = (tweets, statusFilter, follows) => {
   }
 };
 
-export const UserCard = ({page, limit}) => {
+export const UserCard = () => {
   const dispatch = useDispatch();
   const tweets = useSelector(getTweets);
 
@@ -27,13 +27,12 @@ export const UserCard = ({page, limit}) => {
     return savedFollows ? JSON.parse(savedFollows) : {};
   });
 
+  const statusFilter = useSelector(getStatusFilter);
+  const visibleTweets = getVisibleTweets(tweets, statusFilter, follows);
+
   useEffect(() => {
     localStorage.setItem("follows", JSON.stringify(follows));
   }, [follows]);
-
-
-  const statusFilter = useSelector(getStatusFilter);
-  const visibleTweets = getVisibleTweets(tweets, statusFilter, follows);
 
   const handleFollow = (id, followers, avatar, tweets) => {
     if (!follows[id]) {
@@ -46,7 +45,6 @@ export const UserCard = ({page, limit}) => {
       ...prevFollows,
       [id]: !prevFollows[id],
     }));
-
   };
 
   const displayFollowers = (value) => {
@@ -66,7 +64,7 @@ export const UserCard = ({page, limit}) => {
           <LineUser>
             <WrapUser>
               <ImgUser
-                src={avatar}
+                src={avatar? avatar: defaultUserAvatar}
                 alt="userAvatar"
                 width={80}
               />

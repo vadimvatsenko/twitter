@@ -11,6 +11,6 @@ const Container = styled.div`
   padding-right: 15px;
   padding-top: 15px;
   padding-bottom: 15px;
-`
+`;
 
 export default Container

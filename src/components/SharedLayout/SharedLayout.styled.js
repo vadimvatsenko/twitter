@@ -5,9 +5,9 @@ export const Layout = styled.div`
   flex-direction: column;
   min-height: 100vh;
   max-height: 100%;
-`
+`;
 
 export const Main = styled.main`
   flex-grow: 1;
   height: 100%;
-`
+`;

@@ -30,10 +30,7 @@ export const TweetsPage = () => {
       <GoBackBtn />
       <TweetsContainer>
         <TweetsList>
-          <UserCard
-            page={page}
-            limit={limit}
-          />
+          <UserCard/>
         </TweetsList>
       </TweetsContainer>
       {isLoading ?

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import bgImage from '../../images/bgImage.svg';
-import {ReactComponent as Logo} from '../../images/logo.svg'
+import { ReactComponent as Logo } from '../../images/logo.svg';
 
 export const TweetsItems = styled.li`
   position: relative;

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import goItLogo from '../../images/logo.svg'
+import goItLogo from '../../images/logo.svg';
 
 export const HeaderStyled = styled.header`
   display: flex;

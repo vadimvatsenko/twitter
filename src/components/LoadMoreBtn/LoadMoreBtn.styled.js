@@ -13,4 +13,4 @@ export const Button = styled.button`
   font-size: 18px;
   font-weight: 600;
   text-transform: uppercase;
-`
+`;

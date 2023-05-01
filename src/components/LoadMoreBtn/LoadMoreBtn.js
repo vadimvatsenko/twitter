@@ -1,4 +1,4 @@
-import { Button } from "./LoadMoreBtn.styled"
+import { Button } from "./LoadMoreBtn.styled";
 
 export const LoadMoreBtn = ({handleLoadMore}) => {
   return (

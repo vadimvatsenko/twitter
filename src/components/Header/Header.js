@@ -2,7 +2,7 @@ import { useLocation } from "react-router-dom";
 import { HeaderStyled, HeaderContainer, HeaderContentWrap, Navigation, NavigationList, NavigationItems, NavLinkStyled } from "./Header.styled";
 import Filter from "components/Filter";
 import { BsFillHouseHeartFill } from "react-icons/bs";
-import {SiGooglemessages} from 'react-icons/si'
+import { SiGooglemessages } from 'react-icons/si';
 
 export const Header = () => {
   const location = useLocation();

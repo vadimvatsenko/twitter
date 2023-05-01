@@ -1,8 +1,7 @@
 import HomePage from "pages/HomePage/";
 import TweetsPage from "pages/TweetsPage";
-import { SharedLayout } from "./SharedLayout/SharedLayout";
+import SharedLayout from "./SharedLayout/";
 import { Route, Routes, Navigate } from 'react-router-dom';
-
 
 export const App = () => {
   return (
