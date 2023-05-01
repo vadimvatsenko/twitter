@@ -28,7 +28,12 @@ const tweetsSlice = createSlice({
     [addFollowers.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      // state.items = action.payload;
+      const index = state.items.findIndex((item) => item.id === action.payload.id);
+      if (index !== -1) {
+        state.items[index] = action.payload;
+      } else {
+        state.items.push(action.payload);
+      }
     },
     [addFollowers.rejected](state, action) {
       state.isLoading = false;

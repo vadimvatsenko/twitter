@@ -29,7 +29,6 @@ export const UserCard = ({page, limit}) => {
 
   useEffect(() => {
     localStorage.setItem("follows", JSON.stringify(follows));
-    
   }, [follows]);
 
 
@@ -47,6 +46,7 @@ export const UserCard = ({page, limit}) => {
       ...prevFollows,
       [id]: !prevFollows[id],
     }));
+
   };
 
   const displayFollowers = (value) => {

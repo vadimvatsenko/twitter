@@ -8,14 +8,10 @@ import { fetchTweets } from "redux/operations";
 import GoBackBtn from "components/GoBackBtn";
 import Loader from "components/Loader";
 
-import { useLocation } from "react-router-dom";
-
 export const TweetsPage = () => {
 
-  const location = useLocation()
   const dispatch = useDispatch();
   const isLoading = useSelector(isLoadingTweets);
-
 
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(3);
